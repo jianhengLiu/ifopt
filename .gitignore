@@ -1,3 +1,5 @@
 build
 doc/html
 build_install
+.vscode
+*.code-workspace
