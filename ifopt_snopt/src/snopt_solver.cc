@@ -38,8 +38,8 @@ SnoptSolver::Solve (Problem& ref)
   // A complete list of options can be found in the snopt user guide:
   // https://web.stanford.edu/group/SOL/guides/sndoc7.pdf
   snopt.setProbName( "snopt" );
-  snopt.setIntParameter( "Major Print level", 1 );
-  snopt.setIntParameter( "Minor Print level", 1 );
+  snopt.setIntParameter( "Major Print level", 0 );
+  snopt.setIntParameter( "Minor Print level", 0 );
   snopt.setIntParameter( "Derivative option", 1 ); // 1 = snopt will not calculate missing derivatives
   snopt.setIntParameter( "Verify level ", 3 ); // full check on gradients, will throw error
   snopt.setIntParameter("Iterations limit", 200000);
@@ -74,7 +74,7 @@ SnoptSolver::Solve (Problem& ref)
 
   if (EXIT != 0) {
     std::string msg = "ERROR: Snopt failed to find a solution. EXIT:" + std::to_string(EXIT) + ", INFO:" + std::to_string(status_) + "\n";
-    throw std::runtime_error(msg);
+    // throw std::runtime_error(msg);
   }
 
   snopt.SetVariables();
